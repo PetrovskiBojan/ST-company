@@ -20,6 +20,14 @@ domReady(function () {
             const userID = data.userID;
             const token = data.token;
 
+            // Retrieve the type from localStorage
+            const type = localStorage.getItem('type');
+            console.log(type)
+
+            if (!type) {
+                throw new Error('Type not found in localStorage.');
+            }
+
             // Construct the URL for the endpoint
             const url = `http://localhost:3000/users/${userID}/record`;
 
@@ -30,9 +38,10 @@ domReady(function () {
             fetch(url, {
                 method: 'POST', // Specify the method as POST
                 headers: {
+                    'Authorization': `Bearer ${token}`, // Include JWT token as Bearer token
                     'Content-Type': 'application/json' // Specify the content type as JSON
                 },
-                body: JSON.stringify(data) // Convert the data to JSON string and include in the body
+                body: JSON.stringify({ type }) // Include only the type from localStorage
             })
                 .then(response => {
                     if (!response.ok) {
@@ -51,9 +60,9 @@ domReady(function () {
                     alert('Failed to fetch report.');
                 });
         } catch (e) {
-            // Handle JSON parsing errors
-            console.error('Error parsing QR code data:', e);
-            alert('Invalid QR code data.');
+            // Handle JSON parsing errors and localStorage errors
+            console.error('Error:', e);
+            alert(e.message);
         }
     }
 
