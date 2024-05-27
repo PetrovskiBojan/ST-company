@@ -9,6 +9,27 @@ function domReady(fn) {
     }
 }
 
+function speak(message) {
+    const synth = window.speechSynthesis;
+    const utterance = new SpeechSynthesisUtterance(message);
+    synth.speak(utterance);
+}
+
+window.onload = createTitle;
+function createTitle() {
+    const type = localStorage.getItem('type');
+    if (type === "vhod") {
+        speak("Welcome, we are ready for check in")
+    }
+    if (type === "izhod") {
+        speak("Welcome, we are ready for check out")
+    }
+    document.getElementById('tip').innerHTML = type.toUpperCase();
+}
+function returnHome() {
+    localStorage.removeItem('type');
+    window.location.href = 'landing.html'
+}
 domReady(function () {
     // Function to handle QR code scan success
     function onScanSuccess(decodeText, decodeResult) {
@@ -23,6 +44,7 @@ domReady(function () {
             // Retrieve the type from localStorage
             const type = localStorage.getItem('type');
             console.log(type)
+            document.getElementById("tip").innerHTML = type;
 
             if (!type) {
                 throw new Error('Type not found in localStorage.');
@@ -72,3 +94,5 @@ domReady(function () {
     );
     htmlscanner.render(onScanSuccess);
 });
+
+
