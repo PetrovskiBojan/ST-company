@@ -19,11 +19,11 @@ window.onload = createTitle;
 function createTitle() {
     const type = localStorage.getItem('type');
     if (type === "vhod") {
-        speak("We are ready for check in")
+        speak("Ready for check in")
         document.getElementById('tip').innerHTML = "CHECK IN";
     }
     if (type === "izhod") {
-        speak("We are ready for check out")
+        speak("Ready for check out")
         document.getElementById('tip').innerHTML = "CHECK OUT";
     }
 }
@@ -70,11 +70,14 @@ domReady(function () {
                     if (!response.ok) {
                         throw new Error('Failed to fetch report.');
                     }
+
                     return response.json();
                 })
                 .then(data => {
                     // Handle the response data as needed
                     console.log('Response:', data);
+                    let text = data.ime + "has checked" + (type == "vhod" ? "in" : "out")
+                    speak(text);
                     alert('Report fetched successfully.');
                 })
                 .catch(error => {
