@@ -4,25 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/landing.css">
     <title>Check In / Check Out</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Welcome</h1>
-        <button id="checkIn">Check In</button>
-        <button id="checkOut">Check Out</button>
+    <div class="split-container">
+        <div id="checkIn" class="split left">
+            <a href="index.html" class="link">Check In</a>
+        </div>
+        <div id="checkOut" class="split right">
+            <a href="index.html" class="link">Check Out</a>
+        </div>
     </div>
     <script>
         document.getElementById('checkIn').addEventListener('click', function () {
             localStorage.setItem('type', 'vhod');
-            window.location.href = 'index.html';
         });
 
         document.getElementById('checkOut').addEventListener('click', function () {
             localStorage.setItem('type', 'izhod');
-            window.location.href = 'index.html';
         });
     </script>
 </body>

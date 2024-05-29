@@ -19,12 +19,13 @@ window.onload = createTitle;
 function createTitle() {
     const type = localStorage.getItem('type');
     if (type === "vhod") {
-        speak("Welcome, we are ready for check in")
+        speak("We are ready for check in")
+        document.getElementById('tip').innerHTML = "CHECK IN";
     }
     if (type === "izhod") {
-        speak("Welcome, we are ready for check out")
+        speak("We are ready for check out")
+        document.getElementById('tip').innerHTML = "CHECK OUT";
     }
-    document.getElementById('tip').innerHTML = type.toUpperCase();
 }
 function returnHome() {
     localStorage.removeItem('type');
