@@ -1,4 +1,3 @@
-<!-- Index.html file -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +11,21 @@
 <body>
     <div class="container">
         <h1>Scan QR Codes</h1>
+        <h2 id="tip"></h2>
         <div class="section">
             <div id="my-qr-reader"></div>
         </div>
+        <button id="return" onclick="returnHome()">HOME</button>
     </div>
+
+    <!-- Popup Modal -->
+    <div id="scan-result-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="scan-result-text"></p>
+        </div>
+    </div>
+
     <script src="https://unpkg.com/html5-qrcode"></script>
     <script src="./components/scanner.js"></script>
 </body>
