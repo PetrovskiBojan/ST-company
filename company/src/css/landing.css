@@ -59,3 +59,38 @@ body {
     box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 200px #03e9f4;
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }
+
+html,
+body,
+#root,
+.App {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.split-container {
+    display: flex;
+    height: 100%;
+}
+
+.split {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    background-color: #f1f1f1;
+}
+
+.right {
+    background-color: #e1e1e1;
+}
+
+.link {
+    font-size: 24px;
+    text-decoration: none;
+    color: #000;
+}
